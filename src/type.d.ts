@@ -27,3 +27,13 @@ interface EditorProps {
 	updateNote: UpdateNotesFunc
 }
 
+interface NoteElementProps {
+	noteId: string,
+	index: number,
+	currentNoteId:string,
+	setCurrentNoteID: React.Dispatch<React.SetStateAction<string>>
+}
+
+interface SelectedNoteProp {
+	selectedNote:boolean
+}

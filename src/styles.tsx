@@ -22,3 +22,25 @@ export const FirstNote = styled.button`
 export const PaneEditor = styled.section`
 
 `
+export const PaneSideBar = styled.section`
+
+`
+
+export const BarHeader = styled.div`
+
+`
+export const NewNoteBtn = styled.button`
+
+`
+
+export const NoteElementContainer = styled.div`
+
+`
+
+export const NoteElementTitle = styled.div<SelectedNoteProp>`
+  background-color: ${({selectedNote})=> selectedNote? '#4A4E74': ''};
+`
+
+export const TextSnippet = styled.h4`
+
+`
