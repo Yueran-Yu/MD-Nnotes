@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {NoteElementContainer, NoteElementTitle} from '../styles';
+import {NoteElementContainer, NoteElementTitle, TextSnippet} from '../styles';
 
 const NoteElement: FC<NoteElementProps> = ({noteId, index, currentNoteId, setCurrentNoteID}) => {
 	return (
@@ -7,7 +7,7 @@ const NoteElement: FC<NoteElementProps> = ({noteId, index, currentNoteId, setCur
 			<NoteElementTitle
 				selectedNote={noteId === currentNoteId}
 				onClick={() => setCurrentNoteID(noteId)}>
-				<TextSnippet></TextSnippet>
+				<TextSnippet>Note {index + 1}</TextSnippet>
 			</NoteElementTitle>
 		</NoteElementContainer>
 	);
