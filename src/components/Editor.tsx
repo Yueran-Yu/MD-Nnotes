@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{FC} from 'react';
 
-const Editor = () => {
+const Editor:FC<EditorProps> = ({currentNote, updateNote}) => {
 	return (
 		<div>
 
