@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Split from 'react-split';
-
 
 export const CreateNotePage = styled.div`
   width: 100%;
@@ -21,3 +19,6 @@ export const FirstNote = styled.button`
   padding: 1rem;
 `
 
+export const PaneEditor = styled.section`
+
+`
