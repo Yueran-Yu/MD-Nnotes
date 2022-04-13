@@ -24,16 +24,6 @@ button:focus {
     font-weight: 100;
 }
 
-.new-note {
-    cursor: pointer;
-    background-color: var(--bluegrey);
-    border: none;
-    color: white;
-    border-radius: 3px;
-    height: 30px;
-    width: 30px;
-}
-
 .title {
     overflow: hidden;
     width: 100%;

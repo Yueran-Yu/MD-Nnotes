@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import NoteElement from "./NoteElement";
 import {useNotesContext} from "../context/NotesProvider";
-import {PaneSideBar, SideBarHeader} from "../styles";
+import {PaneSideBar, SideBarHeader, SideBarNewNoteButton} from "../styles";
 
 const Sidebar: FC = () => {
 	const {
@@ -16,7 +16,7 @@ const Sidebar: FC = () => {
 		<PaneSideBar>
 			<SideBarHeader>
 				<h3>Notes</h3>
-				<button className="new-note" onClick={createNewNote}>+</button>
+				<SideBarNewNoteButton onClick={createNewNote}>+</SideBarNewNoteButton>
 			</SideBarHeader>
 			{
 				notes.map((note: NoteProps) =>

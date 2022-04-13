@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CreateNewNotes =styled.div`
+export const CreateNewNotes = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -38,9 +38,19 @@ export const SideBarHeader = styled.div`
   justify-content: space-around;
   align-items: center;
   font-size: 20px;
-  margin:15px 0;
-	
-	h3 {
+  margin: 15px 0;
+
+  h3 {
     font-size: 1.75rem;
-	}
+  }
+`
+
+export const SideBarNewNoteButton = styled.button`
+  cursor: pointer;
+  background-color: var(--bluegrey);
+  border: none;
+  color: white;
+  border-radius: 3px;
+  height: 30px;
+  width: 30px;
 `
