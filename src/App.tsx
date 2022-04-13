@@ -3,6 +3,7 @@ import Editor from './components/Editor';
 import Sidebar from "./components/Sidebar";
 import Split from 'react-split';
 import {useNotesContext} from "./context/NotesProvider";
+import {CreateNewNotes, NewNoteButton} from './styles';
 
 
 const App: FC<React.ReactNode> = (): JSX.Element => {
@@ -21,12 +22,12 @@ const App: FC<React.ReactNode> = (): JSX.Element => {
 						{currentNoteId && notes.length > 0 && <Editor/>}
 					</Split>
 					:
-					<div className="no-notes">
+					<CreateNewNotes>
 						<h1>You have no notes</h1>
-						<button className="first-note" onClick={createNewNote}>
+						<NewNoteButton onClick={createNewNote}>
 							Create one now
-						</button>
-					</div>
+						</NewNoteButton>
+					</CreateNewNotes>
 			}
 		</div>
 	);

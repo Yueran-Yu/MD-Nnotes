@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import NoteElement from "./NoteElement";
 import {useNotesContext} from "../context/NotesProvider";
+import {PaneSideBar, SideBarHeader} from "../styles";
 
 const Sidebar: FC = () => {
 	const {
@@ -12,11 +13,11 @@ const Sidebar: FC = () => {
 	} = useNotesContext()
 
 	return (
-		<section className="pane sidebar">
-			<div className="sidebar--header">
+		<PaneSideBar>
+			<SideBarHeader>
 				<h3>Notes</h3>
 				<button className="new-note" onClick={createNewNote}>+</button>
-			</div>
+			</SideBarHeader>
 			{
 				notes.map((note: NoteProps) =>
 					<NoteElement
@@ -26,7 +27,7 @@ const Sidebar: FC = () => {
 						setCurrentNoteID={setCurrentNoteId}
 						deleteNote={deleteNote}/>)
 			}
-		</section>
+		</PaneSideBar>
 	)
 }
 

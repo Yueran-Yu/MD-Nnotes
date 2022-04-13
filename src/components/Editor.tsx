@@ -2,9 +2,10 @@ import React, {FC, useState} from 'react'
 import ReactMde from 'react-mde'
 import * as Showdown from 'showdown'
 import {useNotesContext} from "../context/NotesProvider";
+import { PaneEditor } from '../styles';
 
 const Editor: FC = () => {
-	const {findCurrentNote,updateNote } = useNotesContext()
+	const {findCurrentNote, updateNote} = useNotesContext()
 
 	const [selectedTab, setSelectedTab] = useState<"write" | "preview" | undefined>("write")
 
@@ -16,7 +17,7 @@ const Editor: FC = () => {
 	})
 
 	return (
-		<section className="pane editor">
+		<PaneEditor>
 			<ReactMde
 				value={findCurrentNote().body}
 				onChange={updateNote}
@@ -25,8 +26,8 @@ const Editor: FC = () => {
 				generateMarkdownPreview={markdown => Promise.resolve(converter.makeHtml(markdown))}
 				minEditorHeight={80}
 				heightUnits="vh"/>
-		</section>
-	);
-};
+		</PaneEditor>
+	)
+}
 
 export default Editor;
