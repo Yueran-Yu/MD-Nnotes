@@ -1,10 +1,10 @@
-import React, {FC, useContext, useState} from 'react'
+import React, {FC, useState} from 'react'
 import ReactMde from 'react-mde'
 import * as Showdown from 'showdown'
-import {NotesContext} from "../context/NotesProvider";
+import {useNotesContext} from "../context/NotesProvider";
 
 const Editor: FC = () => {
-	const {findCurrentNote,updateNote } = useContext(NotesContext) as NotesContextProps
+	const {findCurrentNote,updateNote } = useNotesContext()
 
 	const [selectedTab, setSelectedTab] = useState<"write" | "preview" | undefined>("write")
 

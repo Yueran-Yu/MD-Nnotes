@@ -1,6 +1,6 @@
-import React, {FC, useContext} from 'react';
+import React, {FC} from 'react';
 import NoteElement from "./NoteElement";
-import {NotesContext} from "../context/NotesProvider";
+import {useNotesContext} from "../context/NotesProvider";
 
 const Sidebar: FC = () => {
 	const {
@@ -9,7 +9,7 @@ const Sidebar: FC = () => {
 		currentNoteId,
 		setCurrentNoteId,
 		deleteNote
-	} = useContext(NotesContext) as NotesContextProps
+	} = useNotesContext()
 
 	return (
 		<section className="pane sidebar">

@@ -1,4 +1,4 @@
-import React, {FC, createContext, ReactNode, useState, useEffect} from 'react';
+import React, {FC, createContext, ReactNode, useState, useEffect, useContext} from 'react';
 import {nanoid} from "nanoid";
 
 export const NotesContext = createContext<NotesContextProps>(
@@ -71,5 +71,29 @@ const NotesProvider: FC<ReactNode> = ({children}) => {
 		</NotesContext.Provider>
 	);
 };
+
+
+export const useNotesContext = () => {
+	const {
+		notes,
+		findCurrentNote,
+		currentNoteId,
+		setCurrentNoteId,
+		createNewNote,
+		updateNote,
+		deleteNote,
+	} = useContext(NotesContext) as NotesContextProps
+
+	return {
+		notes,
+		findCurrentNote,
+		currentNoteId,
+		setCurrentNoteId,
+		createNewNote,
+		updateNote,
+		deleteNote
+	}
+}
+
 
 export default NotesProvider;

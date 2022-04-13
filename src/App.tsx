@@ -1,12 +1,12 @@
-import React, {FC, useContext} from 'react';
+import React, {FC} from 'react';
 import Editor from './components/Editor';
 import Sidebar from "./components/Sidebar";
 import Split from 'react-split';
-import {NotesContext} from "./context/NotesProvider";
+import {useNotesContext} from "./context/NotesProvider";
 
 
 const App: FC<React.ReactNode> = (): JSX.Element => {
-	const {notes, currentNoteId, createNewNote} = useContext(NotesContext) as NotesContextProps
+	const {notes, currentNoteId, createNewNote} = useNotesContext()
 
 	return (
 
