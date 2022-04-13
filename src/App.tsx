@@ -24,16 +24,40 @@ const App: FC<React.ReactNode> = (): JSX.Element => {
 		setCurrentNoteId(newNote.id)
 	}
 
+	// try to rearrange the most recently-modified not to be at the top
 	const updateNote: UpdateNotesFunc = (text) => {
-		setNotes(
-			notes.map((note: NoteProps): NoteProps => (note.id === currentNoteId ? {...note, body: text} : note))
+		setNotes((notes: NoteProps[]): NoteProps[] => {
+				const newArray = []
+				for (let i = 0; i < notes.length; i++) {
+					const oldNote = notes[i]
+					if (oldNote.id === currentNoteId) {
+						newArray.unshift({...oldNote, body: text})
+					} else {
+						newArray.push(oldNote)
+					}
+				}
+				return newArray
+			}
 		)
 	}
+
+	// this does not rearrange the notes
+	// const updateNote: UpdateNotesFunc = (text) => {
+	// 	setNotes(
+	// 		notes.map((note: NoteProps): NoteProps => (note.id === currentNoteId ? {...note, body: text} : note))
+	// 	)
+	// }
 
 	const findCurrentNote: FindCurrentNoteFunc = () => {
 		return notes.find(note => note.id === currentNoteId) || notes[0]
 	}
 
+	const deleteNote = (e: MouseEvent, noteId: string): NoteProps[] => {
+		e.stopPropagation()
+		setNotes(notes.filter(note=> note.id !==noteId))
+
+		return []
+	}
 	return (
 		<div className="App">
 			{
@@ -46,7 +70,8 @@ const App: FC<React.ReactNode> = (): JSX.Element => {
 							notes={notes}
 							currentNote={findCurrentNote()}
 							setCurrentNoteId={setCurrentNoteId}
-							createNewNote={createNewNote}/>
+							createNewNote={createNewNote}
+							deleteNote={deleteNote}/>
 						{
 							currentNoteId &&
 							notes.length > 0 &&

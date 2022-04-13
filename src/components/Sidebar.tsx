@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import NoteElement from "./NoteElement";
 
-const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, createNewNote}) => {
+const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, createNewNote,deleteNote}) => {
 	return (
 		<section className="pane sidebar">
 			<div className="sidebar--header">
@@ -14,7 +14,8 @@ const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, create
 						key={note.id}
 						note={note}
 						currentNoteId={currentNote.id}
-						setCurrentNoteID={setCurrentNoteId}/>)
+						setCurrentNoteID={setCurrentNoteId}
+					  deleteNote={deleteNote}/>)
 			}
 		</section>
 	)
