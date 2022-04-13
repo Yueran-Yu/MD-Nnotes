@@ -20,7 +20,7 @@ interface SideBarProps {
 	currentNote: NoteProps
 	setCurrentNoteId: React.Dispatch<React.SetStateAction<string>>
 	createNewNote: CreateNewFunc
-	deleteNote: (e:MouseEvent<HTMLButtonElement>, noteId:string)=>NoteProps[]
+	deleteNote: (e:MouseEvent<HTMLButtonElement>, noteId:string)=>void
 }
 
 interface EditorProps {
@@ -32,6 +32,16 @@ interface NoteElementProps {
 	note: NoteProps,
 	currentNoteId:string,
 	setCurrentNoteID: React.Dispatch<React.SetStateAction<string>>
-	deleteNote: (e:MouseEvent<HTMLButtonElement>, noteId:string)=>NoteProps[]
+	deleteNote: (e:MouseEvent<HTMLButtonElement>, noteId:string)=>void
 
+}
+
+interface NotesContextProps {
+	notes: NoteProps[]
+	findCurrentNote: FindCurrentNoteFunc
+	currentNoteId:string
+	setCurrentNoteId: React.Dispatch<React.SetStateAction<string>>
+	createNewNote: CreateNewFunc
+	updateNote:UpdateNotesFunc
+	deleteNote: (e:MouseEvent<HTMLButtonElement>, noteId:string)=>void
 }

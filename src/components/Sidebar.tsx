@@ -1,7 +1,16 @@
-import React, {FC} from 'react';
+import React, {FC, useContext} from 'react';
 import NoteElement from "./NoteElement";
+import {NotesContext} from "../context/NotesProvider";
 
-const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, createNewNote,deleteNote}) => {
+const Sidebar: FC = () => {
+	const {
+		notes,
+		createNewNote,
+		currentNoteId,
+		setCurrentNoteId,
+		deleteNote
+	} = useContext(NotesContext) as NotesContextProps
+
 	return (
 		<section className="pane sidebar">
 			<div className="sidebar--header">
@@ -13,9 +22,9 @@ const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, create
 					<NoteElement
 						key={note.id}
 						note={note}
-						currentNoteId={currentNote.id}
+						currentNoteId={currentNoteId}
 						setCurrentNoteID={setCurrentNoteId}
-					  deleteNote={deleteNote}/>)
+						deleteNote={deleteNote}/>)
 			}
 		</section>
 	)
