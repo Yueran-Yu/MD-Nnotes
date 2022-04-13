@@ -72,28 +72,6 @@ const NotesProvider: FC<ReactNode> = ({children}) => {
 	);
 };
 
-
-export const useNotesContext = () => {
-	const {
-		notes,
-		findCurrentNote,
-		currentNoteId,
-		setCurrentNoteId,
-		createNewNote,
-		updateNote,
-		deleteNote,
-	} = useContext(NotesContext) as NotesContextProps
-
-	return {
-		notes,
-		findCurrentNote,
-		currentNoteId,
-		setCurrentNoteId,
-		createNewNote,
-		updateNote,
-		deleteNote
-	}
-}
-
+export const useNotesContext = () => useContext(NotesContext) as NotesContextProps
 
 export default NotesProvider;

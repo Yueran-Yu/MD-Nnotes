@@ -30,6 +30,6 @@ const App: FC<React.ReactNode> = (): JSX.Element => {
 					</CreateNewNotes>
 			}
 		</div>
-	);
+	)
 }
 export default App;
