@@ -1,21 +1,26 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import Editor from './components/Editor';
 import Sidebar from "./components/Sidebar";
-import {CreateNotePage, FirstNote} from './styles';
 import {nanoid} from 'nanoid';
 import Split from 'react-split';
 
 
 const App: FC<React.ReactNode> = (): JSX.Element => {
-	const [notes, setNotes] = useState<NoteProps[]>([])
+	const [notes, setNotes] = useState<NoteProps[]>(
+		// lazy state initialization
+		() => JSON.parse(localStorage.getItem("notes") || "[]") || [])
 	const [currentNoteId, setCurrentNoteId] = useState<string>((notes[0] && notes[0].id) || '')
+
+	useEffect(() => {
+		localStorage.setItem("notes", JSON.stringify(notes))
+	}, [notes])
 
 	const createNewNote: CreateNewFunc = () => {
 		const newNote = {
 			id: nanoid(),
-			body: "#  Type your markdown note's title here"
+			body: "# Type your markdown note's title here"
 		}
-		setNotes([...notes, newNote])
+		setNotes([newNote, ...notes])
 		setCurrentNoteId(newNote.id)
 	}
 
@@ -38,25 +43,27 @@ const App: FC<React.ReactNode> = (): JSX.Element => {
 						direction='horizontal'
 						className='split'>
 						<Sidebar
-						 notes={notes}
-						 currentNote={findCurrentNote()}
-						setCurrentNoteId={setCurrentNoteId}
-						newNote={createNewNote}/>
-						<Editor
+							notes={notes}
 							currentNote={findCurrentNote()}
-							updateNote={updateNote}
-						/>
+							setCurrentNoteId={setCurrentNoteId}
+							createNewNote={createNewNote}/>
+						{
+							currentNoteId &&
+							notes.length > 0 &&
+              <Editor
+                currentNote={findCurrentNote()}
+                updateNote={updateNote}
+              />}
 					</Split>
 					:
-					<CreateNotePage>
+					<div className="no-notes">
 						<h1>You have no notes</h1>
-						<FirstNote onClick={createNewNote}>
+						<button className="first-note" onClick={createNewNote}>
 							Create one now
-						</FirstNote>
-					</CreateNotePage>
+						</button>
+					</div>
 			}
 		</div>
 	);
 }
-
 export default App;

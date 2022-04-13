@@ -19,7 +19,7 @@ interface SideBarProps {
 	notes: NoteProps[]
 	currentNote: NoteProps
 	setCurrentNoteId: React.Dispatch<React.SetStateAction<string>>
-	newNote: CreateNewFunc
+	createNewNote: CreateNewFunc
 }
 
 interface EditorProps {
@@ -32,8 +32,4 @@ interface NoteElementProps {
 	index: number,
 	currentNoteId:string,
 	setCurrentNoteID: React.Dispatch<React.SetStateAction<string>>
-}
-
-interface SelectedNoteProp {
-	selectedNote:boolean
 }

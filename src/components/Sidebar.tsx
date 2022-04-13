@@ -1,16 +1,13 @@
 import React, {FC} from 'react';
-import {BarHeader, NewNoteBtn, PaneSideBar} from '../styles';
 import NoteElement from "./NoteElement";
 
-
-const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, newNote}) => {
+const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, createNewNote}) => {
 	return (
-		<PaneSideBar>
-			<BarHeader>
+		<section className="pane sidebar">
+			<div className="sidebar--header">
 				<h3>Notes</h3>
-				<NewNoteBtn onClick={newNote}>+
-				</NewNoteBtn>
-			</BarHeader>
+				<button className="new-note" onClick={createNewNote}>+</button>
+			</div>
 			{
 				notes.map((note: NoteProps, index: number) =>
 					<NoteElement
@@ -20,8 +17,8 @@ const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, newNot
 						currentNoteId={currentNote.id}
 						setCurrentNoteID={setCurrentNoteId}/>)
 			}
-		</PaneSideBar>
-	);
-};
+		</section>
+	)
+}
 
 export default Sidebar;
