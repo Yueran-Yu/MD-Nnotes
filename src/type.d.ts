@@ -28,8 +28,7 @@ interface EditorProps {
 }
 
 interface NoteElementProps {
-	noteId: string,
-	index: number,
+	note: NoteProps,
 	currentNoteId:string,
 	setCurrentNoteID: React.Dispatch<React.SetStateAction<string>>
 }

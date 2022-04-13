@@ -1,10 +1,11 @@
 import React, {FC} from 'react';
 
-const NoteElement: FC<NoteElementProps> = ({noteId, index, currentNoteId, setCurrentNoteID}) => {
+const NoteElement: FC<NoteElementProps> = ({note, currentNoteId, setCurrentNoteID}) => {
+	const noteName = JSON.stringify(note.body).slice(0,note.body.indexOf('\n'))
 	return (
-		<div className={`title ${noteId === currentNoteId ? "selected-note" : ""}`}
-				 onClick={() => setCurrentNoteID(noteId)}>
-			<h4 className="text-snippet">Note {index + 1}</h4>
+		<div className={`title ${note.id === currentNoteId ? "selected-note" : ""}`}
+				 onClick={() => setCurrentNoteID(note.id)}>
+			<h4 className="text-snippet">{noteName}</h4>
 		</div>
 	)
 }

@@ -9,11 +9,10 @@ const Sidebar: FC<SideBarProps> = ({notes, currentNote, setCurrentNoteId, create
 				<button className="new-note" onClick={createNewNote}>+</button>
 			</div>
 			{
-				notes.map((note: NoteProps, index: number) =>
+				notes.map((note: NoteProps) =>
 					<NoteElement
 						key={note.id}
-						noteId={note.id}
-						index={index}
+						note={note}
 						currentNoteId={currentNote.id}
 						setCurrentNoteID={setCurrentNoteId}/>)
 			}
